@@ -1,3 +1,31 @@
 <%- include("partials/header.ejs") %>
-    <p>Basic Structure prepared</p>
+    <!-- <p>Basic Structure prepared</p> -->
+    <h1>Joke Encyclopedia</h1>
+    
+    <div class="container">
+    <form id="myForm" method="get">
+        <label for="idInput">Id:</label>
+        <input type="text" id="idInput" name="id">
+  
+        <label for="character">Character:</label>
+        <input type="text" id="character" name="character">
+  
+        <label for="episodes">Episodes:</label>
+        <input type="number" id="episodes" name="episodes">
+  
+        <label for="submit">Route:</label>
+        <input id="get" type="submit" value="GET" formaction="/get-info">
+        <input id="post" type="submit" value="POST" formaction="/get-news">
+        <input id="put" type="submit" value="PUT" formaction="/get-episodes">
+        <input id="patch" type="submit" value="PATCH" formaction="/get-videos">
+        <input id="get-all" type="submit" value="ALL_INFO" formaction="/get-all">
+      </form>
+
+      
+      <div class="response-area">
+        <p>
+          <%= content %>
+        </p>
+      </div>
+    </div>
 <%- include("partials/footer.ejs") %>

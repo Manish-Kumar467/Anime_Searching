@@ -15,11 +15,26 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 
 // API url
-const API_URL = "https://api.jikan.moe/v4";
+const API_URL = "https://v2.jokeapi.dev/joke";
 
 // setting path to index.ejs
 app.get("/", (req, res)=>{
-    res.render("index.ejs");
+    res.render("index.ejs", {content: "waiting for data... "});
+})
+
+app.get("/get-all", async(req, res)=>{
+    const serachId = req.body.idp;
+    try {
+        const result = await axios.get(API_URL+"/anime/"+serachId);
+        res.render("index.ejs", {
+            content: JSON.stringify(result.data)
+        });
+    } catch (error) {
+        res.render("index.ejs", {
+            content: JSON.stringify(error.result.data)
+        });
+    }
+    
 })
 
 // Listening to port 
