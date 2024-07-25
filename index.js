@@ -1,5 +1,5 @@
 // Importing the libraries
-import express from "express";
+import express, { response } from "express";
 import axios from "axios";
 import ejs from "ejs";
 import bodyParser from "body-parser";
@@ -19,12 +19,30 @@ const API_URL = "https://v2.jokeapi.dev/joke";
 
 // setting path to index.ejs
 app.get("/", (req, res)=>{
-    res.render("index.ejs", {content: "waiting for data... "});
+    res.render("index.ejs", {
+        content1: "waiting for data... ",
+        content2: ""
+    });
 })
 
-app.get("/get-joke", async(req, res)=>{
-    res.render("index.ejs", {content: "get-joke route working"});
-    // const serachId = req.body.idp;
+app.post("/joke", async(req, res)=>{
+    const joke_category = req.body["category"];
+    const joke_string = req.body["search_string"];
+    const num_of_joke = req.body["amount"];
+    console.log(`joke_category: ${joke_category},  joke_string: ${joke_string},   num_of_joke: ${num_of_joke}`);
+    try {
+        const response = await axios.get(API_URL+"/"+joke_category+"?contains="+joke_string+"&amount="+num_of_joke);
+        const result = JSON.stringify(response.data,"", 2);
+        console.log(`Joke: ${result}`);
+        res.render("index.ejs", {
+            content1: result,
+            content2: ""
+        })
+        
+    } catch (error) {
+        res.render("index.ejs", {content1: JSON.stringify(response.data), content2: ""});
+    }
+    // const serachId = req.body.id;
     // try {
     //     const result = await axios.get(API_URL+"/anime/"+serachId);
     //     res.render("index.ejs", {

@@ -3,7 +3,7 @@
     <h1>Joke Encyclopedia</h1>
     
     <div class="container">
-    <form id="myForm" method="get">
+    <form id="myForm" method="post" action="/joke">
         <label for="category">Select category/categories: </label>
         <input type="radio" id="Any" name="category" value="Any">
         <label for="Any">Any</label>
@@ -30,7 +30,7 @@
         <br>
 
         <label for="submit">Get a Joke:</label>
-        <input id="get-joke" type="submit" value="get-joke" formaction="/get-joke">
+        <input id="joke" type="submit" value="joke">
 
         <!-- <label for="character">Character:</label>
         <input type="text" id="character" name="character">
@@ -48,9 +48,11 @@
 
       
       <div class="response-area">
-        <p>
-          <%= content %>
-        </p>
+        <pre>
+          <%= content1 %>
+          <br>
+          <%= content2 %>
+        </pre>
       </div>
     </div>
 <%- include("partials/footer.ejs") %>
