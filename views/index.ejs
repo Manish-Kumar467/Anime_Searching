@@ -4,10 +4,35 @@
     
     <div class="container">
     <form id="myForm" method="get">
-        <label for="idInput">Id:</label>
-        <input type="text" id="idInput" name="id">
-  
-        <label for="character">Character:</label>
+        <label for="category">Select category/categories: </label>
+        <input type="radio" id="Any" name="category" value="Any">
+        <label for="Any">Any</label>
+        <input type="radio" id="Programming" name="category" value="Programming">
+        <label for="Programming">Programming</label>
+        <input type="radio" id="Misc" name="category" value="Misc">
+        <label for="Misc">Misc</label>
+        <input type="radio" id="Dark" name="category" value="Dark">
+        <label for="Dark">Dark</label>
+        <input type="radio" id="Pun" name="category" value="Pun">
+        <label for="Pun">Pun</label>
+        <input type="radio" id="Spooky" name="category" value="Spooky">
+        <label for="Spooky">Spooky</label>
+        <input type="radio" id="Christmas" name="category"  value="Christmas">
+        <label for="Christmas">Christmas</label>
+        <br>
+
+        <label for="search_string">Search Joke that contains : </label>
+        <input type="text" id="search_string" name="search_string" placeholder="search_string">
+        <br>
+
+        <label for="amount">Amount of Jokes : </label>
+        <input type="number" id="amount" name="amount" min="1" max="10" placeholder="Amount between 1 - 10">
+        <br>
+
+        <label for="submit">Get a Joke:</label>
+        <input id="get-joke" type="submit" value="get-joke" formaction="/get-joke">
+
+        <!-- <label for="character">Character:</label>
         <input type="text" id="character" name="character">
   
         <label for="episodes">Episodes:</label>
@@ -18,7 +43,7 @@
         <input id="post" type="submit" value="POST" formaction="/get-news">
         <input id="put" type="submit" value="PUT" formaction="/get-episodes">
         <input id="patch" type="submit" value="PATCH" formaction="/get-videos">
-        <input id="get-all" type="submit" value="ALL_INFO" formaction="/get-all">
+        <input id="get-all" type="submit" value="ALL_INFO" formaction="/get-all"> -->
       </form>
 
       

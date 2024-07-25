@@ -22,18 +22,19 @@ app.get("/", (req, res)=>{
     res.render("index.ejs", {content: "waiting for data... "});
 })
 
-app.get("/get-all", async(req, res)=>{
-    const serachId = req.body.idp;
-    try {
-        const result = await axios.get(API_URL+"/anime/"+serachId);
-        res.render("index.ejs", {
-            content: JSON.stringify(result.data)
-        });
-    } catch (error) {
-        res.render("index.ejs", {
-            content: JSON.stringify(error.result.data)
-        });
-    }
+app.get("/get-joke", async(req, res)=>{
+    res.render("index.ejs", {content: "get-joke route working"});
+    // const serachId = req.body.idp;
+    // try {
+    //     const result = await axios.get(API_URL+"/anime/"+serachId);
+    //     res.render("index.ejs", {
+    //         content: JSON.stringify(result.data)
+    //     });
+    // } catch (error) {
+    //     res.render("index.ejs", {
+    //         content: JSON.stringify(error.result.data)
+    //     });
+    // }
     
 })
 
